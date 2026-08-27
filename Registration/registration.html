@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Student Information Form</title>
+    <link rel="stylesheet" href="registration.css">
+    <script src="registration.js"></script>
+</head>
+
+<body>
+
+    <h1>PG Student Information Form</h1>
+
+    <form onsubmit="return validateForm()">
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="name">Full Name:</label><br>
+            <input type="text" id="name" name="name" ><br><br>
+
+            <label for="regno">Register Number:</label><br>
+            <input type="text" id="regno" name="regno"><br><br>
+
+            <label for="email">Email Address:</label><br>
+            <input type="text" id="email" name="email"><br><br>
+
+            <label for="phone">Mobile Number:</label><br>
+            <input type="tel" id="phone" name="phone"><br><br>
+
+            <label for="dob">Date of Birth:</label><br>
+            <input type="date" id="dob" name="dob"><br><br>
+
+            <label>Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="other">Other</label>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Academic Information</legend>
+
+            <label for="course">Course:</label><br>
+            <input type="text" id="course" name="course" value="M.Tech CSE"><br><br>
+
+            <label for="department">Department:</label><br>
+            <input type="text" id="department" name="department"><br><br>
+
+            <label for="semester">Semester:</label><br>
+            <select id="semester" name="semester">
+                <option>Semester I</option>
+                <option>Semester II</option>
+                <option>Semester III</option>
+                <option>Semester IV</option>
+            </select>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Address</legend>
+
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" rows="5" cols="40"></textarea>
+
+        </fieldset>
+
+        <br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+
+</html>

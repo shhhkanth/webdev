@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Student Registration</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h1>PG Student Registration</h1>
+        <a href="manage.html" class="btn-secondary">Manage Students →</a>
+    </div>
+
+    <div id="msg-banner" class="msg-banner" style="display:none;"></div>
+
+    <form id="regForm" action="register" method="post" onsubmit="return validateForm()">
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <div class="field-group">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+                <span class="field-error" id="name-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="regno">Register Number <span class="required">*</span></label>
+                <input type="text" id="regno" name="regno" required>
+                <span class="field-error" id="regno-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+                <span class="field-error" id="email-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="phone">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" maxlength="10" required>
+                <span class="field-error" id="phone-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="dob">Date of Birth <span class="required">*</span></label>
+                <input type="date" id="dob" name="dob" required>
+                <span class="field-error" id="dob-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label>Gender <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="gender" value="Male"> Male</label>
+                    <label class="radio-label"><input type="radio" name="gender" value="Female"> Female</label>
+                    <label class="radio-label"><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+                <span class="field-error" id="gender-error"></span>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Academic Information</legend>
+
+            <div class="field-group">
+                <label for="course">Course <span class="required">*</span></label>
+                <input type="text" id="course" name="course" value="M.Tech CSE" required>
+                <span class="field-error" id="course-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="department">Department <span class="required">*</span></label>
+                <input type="text" id="department" name="department" required>
+                <span class="field-error" id="department-error"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="semester">Semester <span class="required">*</span></label>
+                <select id="semester" name="semester" required>
+                    <option value="">-- Select --</option>
+                    <option value="Semester I">Semester I</option>
+                    <option value="Semester II">Semester II</option>
+                    <option value="Semester III">Semester III</option>
+                    <option value="Semester IV">Semester IV</option>
+                </select>
+                <span class="field-error" id="semester-error"></span>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Address</legend>
+            <div class="field-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="4"></textarea>
+            </div>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Register</button>
+            <button type="reset" class="btn-reset">Reset</button>
+        </div>
+
+    </form>
+
+    <script src="registration.js" defer></script>
+    <script defer>
+        // Show error/success from redirect query param
+        const params = new URLSearchParams(window.location.search);
+        const banner = document.getElementById('msg-banner');
+        if (params.get('error') === 'duplicate_regno') {
+            banner.textContent = 'Register number already exists. Please use a different one.';
+            banner.className = 'msg-banner error';
+            banner.style.display = 'block';
+        } else if (params.get('error') === 'db') {
+            banner.textContent = 'A database error occurred. Please try again.';
+            banner.className = 'msg-banner error';
+            banner.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
